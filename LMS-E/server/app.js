@@ -11,7 +11,6 @@ import courseRoutes from "./routes/course.route.js";
 import paymentRoutes from "./routes/payment.route.js";
 import contactRoutes from "./routes/contact.route.js";
 import adminRoutes from "./routes/admin.route.js";
-
 import errorMiddleware from "./middleware/error.middleware.js";
 
 const app = express();

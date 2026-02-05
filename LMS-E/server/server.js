@@ -5,6 +5,11 @@ import Razorpay from 'razorpay'
 
 const PORT = process.env.PORT || 5000;
 
+// Test Route
+app.get("/ping", (_, res) => {
+  res.send("pong");
+});
+
 //cloudinary configuration
 cloudinary.v2.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,

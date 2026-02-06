@@ -35,7 +35,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/allcourse" element={<CourseList />} />
+        <Route path="/courses" element={<CourseList />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/denied" element={<Denied />} />
         <Route path="/course/description" element={<CourseDescription />} />

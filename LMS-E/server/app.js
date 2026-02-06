@@ -33,8 +33,9 @@ app.use(
       "http://localhost:5173", 
       "https://lms-fullstack-project-wa1v.onrender.com"
     ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
+    // methods: ["GET", "POST", "PUT", "DELETE"],
+    
   })
 );
 

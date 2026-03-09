@@ -1,5 +1,6 @@
 import { Router } from "express";
 import upload from "../middleware/multer.middleware.js";
+
 import {
   addLactureToCourseById,
   createCourse,
@@ -9,37 +10,57 @@ import {
   updateCourse,
   deleteLecture
 } from "../controllers/course.controller.js";
-import { authorizedRoles, isLoggedIn } from '../middleware/auth.middleware.js';
+
+import { authorizedRoles, isLoggedIn } from "../middleware/auth.middleware.js";
 
 const router = Router();
 
-// GET all courses + create course
+/* ===============================
+   GET ALL COURSES + CREATE COURSE
+================================ */
+
 router
   .route("/")
   .get(getAllCourse)
-//   .post(
-//   isLoggedIn,
-//   authorizedRoles("admin"),
-//   upload.single("thumbnail"),  // ✔ FIXED
-//   createCourse
-// )
-.post(isLoggedIn,authorizedRoles("admin"),upload.single("thumbnail"),createCourse)
+  .post(
+    isLoggedIn,
+    authorizedRoles("admin"),
+    upload.single("thumbnail"),
+    createCourse
+  );
 
+/* ===============================
+   COURSE OPERATIONS
+================================ */
 
-// GET/UPDATE/DELETE/ADD lecture
 router
   .route("/:id")
-  .get(isLoggedIn, authorizedRoles("admin"), getLactureByCourseId)
+  // ⭐ FIX — students can view lectures
+  .get(isLoggedIn, getLactureByCourseId)
+
+  // ⭐ only admin
   .put(isLoggedIn, authorizedRoles("admin"), updateCourse)
+
+  // ⭐ only admin
   .delete(isLoggedIn, authorizedRoles("admin"), removeCourse)
+
+  // ⭐ add lecture (admin)
   .post(
     isLoggedIn,
     authorizedRoles("admin"),
     upload.single("lecture"),
     addLactureToCourseById
-  )
-  router.delete("/:id/lectures/:lectureId", isLoggedIn, authorizedRoles("admin"), deleteLecture);
+  );
 
-  
+/* ===============================
+   DELETE SINGLE LECTURE
+================================ */
+
+router.delete(
+  "/:id/lectures/:lectureId",
+  isLoggedIn,
+  authorizedRoles("admin"),
+  deleteLecture
+);
 
 export default router;

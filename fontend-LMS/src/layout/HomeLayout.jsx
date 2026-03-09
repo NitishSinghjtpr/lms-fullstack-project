@@ -91,7 +91,7 @@ const HomeLayout = ({ children }) => {
             </li>
 
             <li>
-              <Link to="/allcourse">Get all course</Link>
+              <Link to="/courses">Get all course</Link>
             </li>
 
             {!isLoggedIn && (
@@ -121,11 +121,15 @@ const HomeLayout = ({ children }) => {
                     </button>
                   </Link>
 
-                  <Link onClick={handleLogout}>
-                    <button className="bg-green-600 text-white px-4 py-1 font-semibold rounded-md hover:bg-green-700">
-                      Logout
-                    </button>
-                  </Link>
+                  {/* logout should not live inside a <Link>; that component
+                      triggers navigation immediately and can cancel the async
+                      dispatch. use a plain button so we control the flow. */}
+                  <button
+                    onClick={handleLogout}
+                    className="bg-green-600 text-white px-4 py-1 font-semibold rounded-md hover:bg-green-700"
+                  >
+                    Logout
+                  </button>
                 </div>
               </li>
             )}

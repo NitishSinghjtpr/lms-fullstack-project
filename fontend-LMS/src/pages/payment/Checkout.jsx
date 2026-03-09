@@ -17,9 +17,6 @@ function Checkout() {
   const subscription_id = useSelector(
     (state) => state?.razorpay?.subscription_id,
   );
-  const isPaymentVerified = useSelector(
-    (state) => state?.razorpay?.isPaymentVerified,
-  );
 
   const userData = useSelector((state) => state?.auth?.data);
   const paymentDetails = {
@@ -76,6 +73,7 @@ function Checkout() {
 
   useEffect(() => {
     load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

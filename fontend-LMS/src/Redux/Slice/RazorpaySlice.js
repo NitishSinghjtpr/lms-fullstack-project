@@ -71,7 +71,7 @@ export const getPaymentRecord = createAsyncThunk("/payments/record", async () =>
 
         return (await response).data;
 
-    } catch (error) {
+    } catch {
         toast.error("Operation failed");
     }
 });
@@ -91,7 +91,7 @@ export const cancleCourseBundle = createAsyncThunk("/payments/cancle", async () 
 
         return (await response).data;
 
-    } catch (error) {
+    } catch {
         toast.error("Operation failed");
     }
 });

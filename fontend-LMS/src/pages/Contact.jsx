@@ -46,7 +46,7 @@ const Contact = () => {
           message: "",
         });
       }
-    } catch (error) {
+    } catch {
       toast.error("operation failed...");
     }
   }

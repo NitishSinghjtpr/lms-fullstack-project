@@ -53,7 +53,7 @@ export const login = createAsyncThunk("/auth/login", async (data) => {
 });
 
 // ================= LOGOUT =================
-export const logout = createAsyncThunk("/auth/logout", async () => {
+export const logout = createAsyncThunk("/logout", async () => {
   try {
     const resPromise = axiosInstance.get("/user/logout");
 

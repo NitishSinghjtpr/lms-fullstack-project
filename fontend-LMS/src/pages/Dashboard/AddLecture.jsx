@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import HomeLayout from "../../layout/HomeLayout";
 import { useLocation, useNavigate } from "react-router";
@@ -21,16 +22,19 @@ function AddLecture() {
       return alert("All fields are required");
     }
 
-    await dispatch(
-      addCourseLectures({
-        courseId: courseId,
-        lecture: lectureVideo,
-        title: lectureTitle,
-        description: lectureDescription,
-      })
-    );
+  await dispatch(
+  addCourseLectures({
+    courseId: courseId,
+    lecture: lectureVideo,
+    title: lectureTitle,
+    description: lectureDescription,
+  })
+);
 
-    navigate(-1);
+// 🔥 refresh courses
+await dispatch(getAllCourses());
+
+navigate("/courses");
   }
 
   return (

@@ -15,9 +15,9 @@
 
 import axios from "axios";
 
+// Vite proxy makes it same-origin, use relative path
 const axiosInstance = axios.create({
-//   baseURL: "https://lms-fullstack-project-1.onrender.com/api/v1",/
-baseURL:"http://localhost:5000/api/v1",
+  baseURL: "/api/v1",
   withCredentials: true,
   headers: {
     "Content-Type": "application/json"
